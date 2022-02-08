@@ -12,3 +12,10 @@
 Bernardo Alves Furtado
 
 1o. semestre 2022
+
+#### Alunos
+1. Rodrigo Fracalosi
+2. Marcos Alencar
+3. Jainne 
+4. Kátia Vaz
+5. 
