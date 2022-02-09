@@ -5,5 +5,9 @@ def print_sentences():
     print('Adoro Python')
 
 
+def outra_funcao():
+    pass
+
+
 if __name__ == '__main__':
     print_sentences()
