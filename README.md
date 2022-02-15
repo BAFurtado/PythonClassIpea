@@ -18,4 +18,11 @@ Bernardo Alves Furtado
 2. Marcos Alencar
 3. Jainne 
 4. Kátia Vaz
-5. 
+5. Luiz Felipe Monteiro Seixas
+6. Haroldo Metzker
+7. Flávio Carneiro
+8. Pedro H. Souza
+9. Marcos Hecksher
+10. Christiane de Araujo
+11. Fabiano dos Anjos
+12. Felippe Rocha
