@@ -16,7 +16,7 @@ Bernardo Alves Furtado
 #### Alunos
 1. Rodrigo Fracalosi
 2. Marcos Alencar
-3. Jainne 
+3. Jainne Coutinho
 4. Kátia Vaz
 5. Luiz Felipe Monteiro Seixas
 6. Haroldo Metzker
@@ -26,3 +26,4 @@ Bernardo Alves Furtado
 10. Christiane de Araujo
 11. Fabiano dos Anjos
 12. Felippe Rocha
+13. André Felipe
