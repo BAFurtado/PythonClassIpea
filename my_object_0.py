@@ -9,7 +9,7 @@ def polygon(n, t, c):
     b.color(c)
     b.speed(2)
     b.penup()
-    b.forward(random.randint(25, 100))
+    b.forward(random.randint(-100, 100))
     b.pendown()
     for i in range(n):
         b.forward(t)
