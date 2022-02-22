@@ -1,10 +1,10 @@
 import random
 
 
-def generate():
+def generate(n=10):
 
     l = list()
-    for i in range(10):
+    for i in range(n):
         l.append(random.randint(0, 10))
 
     return l
@@ -23,3 +23,6 @@ if __name__ == '__main__':
         print(i)
         print(a[i])
         print(f'O i é {i} e o a[i] é {a[i]}')
+
+    b = generate(5)
+    print(b)
