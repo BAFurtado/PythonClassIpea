@@ -13,7 +13,7 @@ def concatenar_dicts(*args):
 
 
 def exemplos_default_dict():
-    l1, l2 = generate(5), generate(10)
+    l1, l2 = generate(3), generate(10)
 
     # list1
     d_list = defaultdict(list)
@@ -26,7 +26,7 @@ def exemplos_default_dict():
         d_list[1].append(j)
     # int
     d_int = defaultdict(int)
-    for j in generate(10):
+    for j in l1:
         d_int[1] += j ** 2
     return d_list, d_int
 
@@ -41,6 +41,7 @@ if __name__ == '__main__':
 
     # KEYS
     d4 = {'key1': 100, 'key2': 'vinte e três', 'key3': [11, 10, 54, 43]}
+    d4['key_diferente'] = 'nao vai imprimir, se estiver iterando com inteiro'
 
     print(f"{'key3' in d4}")
 
@@ -55,14 +56,18 @@ if __name__ == '__main__':
         if f'key{i}' in d4:
             print(f"{d4[f'key{i}']}")
 
-    # SIMPLE ITERATION é sempre A KEY
+    # SIMPLE ITERATION sobre um dicionário, cujo padrão é sua lista de chaves
     for i in d4:
         print(f'esta é uma key: {i}')
 
+    # Iterando e produzindo valores
+    for key in d4:
+        print(d4[key])
+
     # ITERATING A DICTIONARY
-    for k, v in d4.items():
-        print(f'k é a key: {k}')
-        print(f'v é o value: {v}')
+    for key, value in d4.items():
+        print(f'k é a key: {key}')
+        print(f'v é o value: {value}')
 
     for v in d4.values():
         print(v)
@@ -72,7 +77,7 @@ if __name__ == '__main__':
             print('vou tentar, somar, se for de inteiros ou strings, ok...')
             print(f'a soma da lista é: {sum(v)}')
         else:
-            f'{v} não é uma lista'
+            print(f'{v} não é uma lista')
         print('--------')
 
     # UPDATE
@@ -92,7 +97,6 @@ if __name__ == '__main__':
     # Calcule a média das idades
     m = sum(d_zip.values()) / len(d_zip)
     print(f'{m:.2f}')
-
 
     # DEFAULTDICT
     d5, d6 = exemplos_default_dict()
