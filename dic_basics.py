@@ -89,6 +89,11 @@ if __name__ == '__main__':
 
     print(d_zip)
 
+    # Calcule a média das idades
+    m = sum(d_zip.values()) / len(d_zip)
+    print(f'{m:.2f}')
+
+
     # DEFAULTDICT
     d5, d6 = exemplos_default_dict()
     print(d5)
