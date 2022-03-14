@@ -1,0 +1,76 @@
+"""
+    Pequeno script/bot para acessar, ler e gravar portarias e documentos
+    publicadas no DOU para órgãos específicos e sessões específicas.
+
+    Necessita instalação de python, pandas, selenium.
+    Necessita arquivo chromedriver (Google Chrome) disponível no folder.
+
+    Defina a seção, o período de pesquisa e o nome do órgão para pesquisar.
+
+    Saída: impressão da frase principal da portaria, documento.
+    Planilha com o nome da portaria ou documento, a frase principal e menções a SIAPEs ou DAS.
+
+"""
+import re
+import pandas as pd
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+
+
+def get_texts(site, process=True):
+    """ Realiza a busca no site da imprensa oficial, a partir de uma query organizada
+    """
+    browser = webdriver.Chrome(options=options)
+    browser.get(site)
+    res = browser.find_elements(By.CLASS_NAME, "title-marker")
+    res2 = list()
+    for each in res:
+        link = each.find_element(By.TAG_NAME, 'a').get_property('href')
+        tab = webdriver.Chrome(options=options)
+        tab.get(link)
+        out = tab.find_element(By.ID, 'materia').text
+        if process:
+            get_main_text(out)
+        res2.append(out)
+        tab.quit()
+    browser.quit()
+    return res2
+
+
+def building_query(secao, data, palavra):
+    """ Constrói a query a partir das necessidades da pesquisa
+    """
+    return fr'https://www.in.gov.br/consulta/-/buscar/dou?q={palavra}+&s=do{secao}&exactDate={data}&sortType=0'
+
+
+def get_main_text(text, db='dou.csv'):
+    """ Extrai os dados do documento e grava em arquivo pandas que é reutilizável
+    """
+    try:
+        data = pd.read_csv(f'data/{db}', sep=';')
+        data = data.set_index('document')
+    except FileNotFoundError:
+        data = pd.DataFrame(columns=['siape', 'das', 'context'])
+        data.index.name = 'document'
+    das_pattern = r'(DAS \d+.\d+)'
+    siape_pattern = r'(SIAPE nº \d+)'
+    lines = text.split('\n')
+    if lines[3] not in data.index:
+        data.loc[lines[3], 'context'] = lines[5]
+        data.loc[lines[3], 'das'] = re.findall(das_pattern, lines[5])
+        data.loc[lines[3], 'siape'] = re.findall(siape_pattern, lines[5])
+        print(lines[5])
+    data.to_csv(f'data/{db}', sep=';')
+
+
+if __name__ == '__main__':
+    s = 2
+    dt = 'semana'
+    org = 'ipea'
+
+    query = building_query(s, dt, org)
+    txts = get_texts(query)
