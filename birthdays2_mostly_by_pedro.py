@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def create_birthdays(students: int) -> list:
@@ -12,16 +13,29 @@ def duplicados(birthdays: list) -> bool:
     return not len(birthdays) == len(set(birthdays))
 
 
-def simulations(number_simulations: int, number_students: int) -> str:
-    # Chame a função create_birthdays e duplicados repetidmaente (number) e calcule a probabilidade
+def simulations(number_simulations: int, number_students: int) -> float:
+    # Chame a função create_birthdays e duplicados repetidanente (number) e calcule a probabilidade
     out = list()
     for i in range(number_simulations):
         out += [duplicados(create_birthdays(number_students))]
-    print(f'Probability of having two birthdays on the same day is {sum(out)/len(out):.6f}')
+    # print(f'Probability of having two birthdays on the same day is {sum(out)/len(out):.6f}')
+    return sum(out)/len(out)
+
+
+def main(n_sim):
+    ys = list()
+    for i in range(1, 100):
+        ys.append(simulations(n_sim, i))
+    plt.plot(range(1, 100), ys)
+    plt.xlabel('Número alunos na classe')
+    plt.ylabel('Probability of having two birthdays on the same day')
+    plt.show()
 
 
 if __name__ == '__main__':
-    n_simulation = 10000
+    n_simulation = 1000
     n_students = 67
 
-    simulations(n_simulation, n_students)
+    # simulations(n_simulation, n_students)
+    main(n_simulation)
+
