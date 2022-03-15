@@ -11,9 +11,10 @@
     Planilha com o nome da portaria ou documento, a frase principal e menções a SIAPEs ou DAS.
 
 """
+import os
 import re
-import pandas as pd
 
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -47,7 +48,7 @@ def building_query(secao, data, palavra):
     return fr'https://www.in.gov.br/consulta/-/buscar/dou?q={palavra}+&s=do{secao}&exactDate={data}&sortType=0'
 
 
-def get_main_text(text, db='dou.csv'):
+def get_main_text(text, db='dou.csv', path='/home/furtado/Documents/Professor/Python2022'):
     """ Extrai os dados do documento e grava em arquivo pandas que é reutilizável
     """
     try:
@@ -64,7 +65,7 @@ def get_main_text(text, db='dou.csv'):
         data.loc[lines[3], 'das'] = re.findall(das_pattern, lines[5])
         data.loc[lines[3], 'siape'] = re.findall(siape_pattern, lines[5])
         print(lines[5])
-    data.to_csv(f'data/{db}', sep=';')
+    data.to_csv(os.path.join(path, f'data/{db}'), sep=';')
 
 
 if __name__ == '__main__':
