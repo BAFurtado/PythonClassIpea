@@ -1,3 +1,7 @@
+""" Source: Mission from MINE py.checkio.org
+"""
+
+
 def best_stock(data: dict) -> str:
     # your code here
     return 'some_string'
