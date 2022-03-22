@@ -10,6 +10,9 @@
     Saída: impressão da frase principal da portaria, documento.
     Planilha com o nome da portaria ou documento, a frase principal e menções a SIAPEs ou DAS.
 
+    Routine: to make it run everyday, I use linux crontab (windows task scheduler, I guess), associated with
+    an automatic cron MAILTO command.
+
 """
 import os
 import re
@@ -52,7 +55,7 @@ def get_main_text(text, db='dou.csv', path='/home/furtado/Documents/Professor/Py
     """ Extrai os dados do documento e grava em arquivo pandas que é reutilizável
     """
     try:
-        data = pd.read_csv(f'data/{db}', sep=';')
+        data = pd.read_csv(os.path.join(path, f'data/{db}'), sep=';')
         data = data.set_index('document')
     except FileNotFoundError:
         data = pd.DataFrame(columns=['siape', 'das', 'context'])
