@@ -125,9 +125,11 @@ class Hand(Deck):
 if __name__ == '__main__':
     deck = Deck()
     deck.shuffle()
-
-    hand = Hand()
-
-    deck.move_cards(hand, 5)
-    hand.sort()
-    print(hand)
+    #
+    pedro = Hand()
+    #
+    diguinho = Hand()
+    deck.move_cards(pedro, 5)
+    deck.move_cards(diguinho, 5)
+    diguinho.sort()
+    print(diguinho)
