@@ -85,7 +85,7 @@ if __name__ == '__main__':
     s1.account.deposit(a1.account.pay(s1.cost))
     #
     # # visit
-    # s1.check_capacity()
+    print(s1.check_capacity())
     # s1.visit()
     # a1.get_fun(s1.fun)
     #
