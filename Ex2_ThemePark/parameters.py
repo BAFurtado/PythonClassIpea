@@ -6,7 +6,7 @@ params = {'capacity': [4, 8],
           'salaries': [20, 30],
           'increment_num_visitors_by': 25,  # 2
           'increment_exponencial': 1,
-          'num_simulations': 2,           # 250 500
+          'num_simulations': 10,           # 250 500
           'num_shops': 20
 }
 
