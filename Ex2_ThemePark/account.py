@@ -86,9 +86,9 @@ if __name__ == '__main__':
     #
     # # visit
     print(s1.check_capacity())
-    # s1.visit()
-    # a1.get_fun(s1.fun)
+    s1.visit()
+    a1.get_fun(s1.fun)
     #
     # # funds
-    # a1.check_funds(s1)
+    a1.check_funds(s1)
     
