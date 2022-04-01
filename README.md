@@ -31,4 +31,4 @@ Bernardo Alves Furtado
 14. Luiz Felipe Monteiro Seixas
 </span>
 
-![](Ex2_ThemePark/Output Theme Park.png)
+![](Ex2_ThemePark/Output%20Theme%20Park.png)
