@@ -15,15 +15,20 @@ Bernardo Alves Furtado
 
 #### Alunos
 1. Rodrigo Fracalosi
-2. Marcos Alencar
-3. Jainne Coutinho
-4. Kátia Vaz
-5. Luiz Felipe Monteiro Seixas
-6. Haroldo Metzker
-7. Flávio Carneiro
-8. Pedro H. Souza
-9. Marcos Hecksher
-10. Christiane de Araujo
-11. Fabiano dos Anjos
-12. Felippe Rocha
-13. André Felipe
+2. Jainne Coutinho
+3. Kátia Vaz
+4. Haroldo Metzker
+5. Flávio Carneiro
+6. Pedro H. Souza
+7. Christiane de Araujo
+
+<span style="color:grey">
+8. Marcos Hecksher
+9. Fabiano dos Anjos
+11. Felippe Rocha
+12. André Felipe
+13. Marcos Alencar
+14. Luiz Felipe Monteiro Seixas
+</span>
+
+![](Ex2_ThemePark/Output Theme Park.png)
