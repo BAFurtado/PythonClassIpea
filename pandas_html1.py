@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 if __name__ == '__main__':
@@ -19,3 +20,13 @@ if __name__ == '__main__':
     wiki_data[9]
     wiki_data[9].iloc[:, 0]
     wiki_data[9].loc[13]
+
+    # Drop com número index e axis=0 linha
+    mm = wiki_data[12]
+    mm = mm.drop(217, axis=0)
+    mm = mm.dropna(subset=['Deaths'])
+    mm['Deaths'] = pd.to_numeric(mm['Deaths'])   # , errors='coerce'
+    mm['Deaths'] = mm['Deaths'].replace('', '0')
+
+    mm['Deaths'] = mm['Deaths'].astype(int)
+    mm['Deaths'].sum()
