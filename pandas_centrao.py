@@ -24,5 +24,3 @@ if __name__ == '__main__':
     c.groupby('uf').votos_federal.agg(['min', 'mean', max, 'count'])
     c.groupby('uf').votos_federal.agg(['min', 'mean', max]).applymap(lambda x: f'{x:,.0f}')
 
-
-

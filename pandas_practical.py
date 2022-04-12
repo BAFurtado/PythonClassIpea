@@ -86,7 +86,7 @@ data2 = pd.DataFrame({'outra_a': [20, 1, 92, 53, 4, 5, 6, 700],
 data.append(data2)
 
 data3 = pd.DataFrame({'col_a': [20, 1, 92, 53, 4, 5, 6, 700],
-                     'col_b': [7, 26, 4, 45, 71, 71, 1, 870],
+                      'col_b': [7, 26, 4, 45, 71, 71, 1, 870],
                       'strings': ['a', np.nan, None, 9, 8, 7, 10, 11]})
 
 data_nova2 = data.append(data3)

@@ -32,6 +32,7 @@ def get_many_tables(start_day='2022-03-21'):
     out = pd.DataFrame()
     dates = get_past_weeks(start_day)
     for d in dates:
+        # strftime: transforma objeto datetime em texto
         p2 = f"https://www.atptour.com/en/rankings/singles?rankRange=1-10&" \
              f"rankDate={datetime.datetime.strftime(d, '%Y-%m-%d')}"
         print(p2)
