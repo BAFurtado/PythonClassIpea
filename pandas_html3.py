@@ -29,3 +29,20 @@ if __name__ == '__main__':
     #     print(name, type(grupo), len(grupo))
 
     # gr = [g for n, g in d2.groupby('ShipMode')]
+
+    import math
+
+
+    class Foo:
+        def __init__(self, i):
+            self.i = i
+
+        def raiz(self):
+            self.i = math.sqrt(self.i)
+
+    a = [1, 2, 3, 4]
+    [math.sqrt(i) for i in a]
+    b = [Foo(i) for i in a]
+    [i.raiz() for i in b]
+
+    b[1].i
