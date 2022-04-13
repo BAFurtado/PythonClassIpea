@@ -37,10 +37,10 @@ def generate_grid(menor_x, maior_x, menor_y, maior_y, size):
     # O grid com cada coordenada x e y
     xx, yy = np.meshgrid(x, y)
     # A matriz Z que tem um valor para cada combinação de x e y, portanto 101 x 101
-    zz = .4 * xx ** 2 + np.sin(yy) ** 3 + np.cos(xx) * 2.1
+    # zz = .4 * xx ** 2 + np.sin(yy) ** 3 + np.cos(xx) * 2.1
     # zz = np.random.random((101, 101)) * np.random.random((101, 101))
     # zz = np.log(np.random.random((101, 101)))
-    # zz = np.exp(np.random.random((101, 101)))
+    zz = np.exp(np.random.random((101, 101)))
     print(zz.shape)
     return xx, yy, zz
 
@@ -122,13 +122,16 @@ if __name__ == '__main__':
     new_vectorized_function([1, 2, 3, 4], [1, 2, 3, 4])
     new_vectorized_function(2, [1, 2, 3, 4])
 
-    new_vectorized_function(np.random.randint(1, 10, 10), 5)
+    w = new_vectorized_function(np.random.randint(1, 10, 100000), 5)
 
     # 10. Conditions. np.where
+    # SINTAXE: O JEITO CERTO DE ENTRAR A INFORMAÇÃO:
     # CONDIÇÃO, SE VERDADEIRO, SE FALSO
     w = np.where(a < 5, a, 100)
     w = np.where(a < 5, a, a ** 3)
     w = np.where(a < 5, 0, 1)
+    w = np.where(a % 2 != 0, 1, 0)
+    w = np.where(a % 2 == 0, 0, 1)
 
     # 11. Slicing. Just as lists
     a = np.arange(20).reshape(4, 5)
@@ -145,5 +148,5 @@ if __name__ == '__main__':
 
     # 7. Real-life: calculating GINI coefficient
     mu = 1.7
-    salaries = np.random.lognormal(mean=mu, size=10000)
+    salaries = np.random.lognormal(mean=mu, size=1000000)
     print(f'Estimated gini from a lognormal distribution with mean={mu} is {calculate_gini(salaries):.04f}')
