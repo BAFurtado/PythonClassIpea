@@ -34,8 +34,8 @@ def produz_respostas(data):
 
 
 def exemplo_iterate_over_group(data, by='ShipMode'):
-    print(f'Num. linhas originais: {len(d2)}')
-    for name, grupo in d2.groupby(by):
+    print(f'Num. linhas originais: {len(data)}')
+    for name, grupo in data.groupby(by):
         print(f'\nNome do grupo: {name}, a partir da coluna: {by}\n'
               f'tipo objeto {type(grupo)}, '
               f'tamanho grupo: {len(grupo)}')
@@ -50,10 +50,17 @@ def direto_csv_net(address):
 if __name__ == '__main__':
     p2 = r'https://github.com/metatron-app/metatron-doc-discovery/blob/master/_static/data/sales-data-sample.csv'
     d2 = direto_csv_net(p2)
-    # exemplo_iterate_over_group(d2)
-    produz_respostas(d2)
+    exemplo_iterate_over_group(d2)
+    # produz_respostas(d2)
 
     # Plot rápido
     # d2.plot('longitude', 'latitude', kind='scatter')
     # plt.show()
     # d3 = d2.groupby('ShipMode').agg(['sum', 'count'])['Profit']
+
+    # Outro exemplo de iteração com DOIS resultados para cada loop
+    b = ['a', 'b', 'c', 'd']
+    for i, j in enumerate(b):
+        print(f'o i é {i}, e o j é {j}')
+
+
