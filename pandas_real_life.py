@@ -115,9 +115,9 @@ if __name__ == '__main__':
 
     output1 = read_age_gender(k)
 
-    # p3 = r'data/Pessoa03_RO.csv'
-    # output2 = get_color(p3)
+    p3 = r'data/Pessoa03_RO.csv'
+    output2 = get_color(p3)
     #
-    # p4 = r'data/Basico_RO.csv'
-    # output3 = get_wage_num_family(p4)
+    p4 = r'data/Basico_RO.csv'
+    output3 = get_wage_num_family(p4)
 
