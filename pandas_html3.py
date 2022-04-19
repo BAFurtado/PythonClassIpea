@@ -3,7 +3,6 @@ import pandas as pd
 
 # 0. Iterating over a groupby
 # 1. List comprehension. Dictionary comprehension
-# {k: += for k in range(5)}
 
 
 # Tarefas:
@@ -13,6 +12,36 @@ import pandas as pd
 # 3. Some o Profit por State e ordene. California lucrou mais? E o segundo?
 # 4. Quais são as 4 categorias de envio (ShipMode)? Qual é o mais lucrativo?
 
+def produz_respostas(data):
+    print('Questao 1')
+    data['tempo_handling'] = pd.to_datetime(data['ShipDate']) - pd.to_datetime(data['OrderDate'])
+    print(f"Média entre pedido e entrega postada: {data['tempo_handling'].mean()}")
+    print('')
+    print('Questao 2')
+    print(f"Frequência Ship Status: \n{data['ShipStatus'].value_counts().apply(lambda value: f'{value:,}')}")
+    print('')
+    print('Questao 3')
+    res = data.groupby('State').agg('sum')['Profit'].sort_values(ascending=False).head()
+    print(res.apply(lambda value: f"{value:,}"))
+    print('')
+    print('Questao 4')
+    q4 = data.groupby('ShipMode').agg(['sum', 'count'])['Profit']
+    print('Categorias de envio: ')
+    print([i for i in q4.index])
+    q4['ModeProfit'] = q4['sum'] / q4['count']
+    print('Lucro máximo: ')
+    print(q4[q4['ModeProfit'] == q4['ModeProfit'].max()])
+
+
+def exemplo_iterate_over_group(data, by='ShipMode'):
+    print(f'Num. linhas originais: {len(d2)}')
+    for name, grupo in d2.groupby(by):
+        print(f'\nNome do grupo: {name}, a partir da coluna: {by}\n'
+              f'tipo objeto {type(grupo)}, '
+              f'tamanho grupo: {len(grupo)}')
+    # Alternativa para imprimir nome e grupo usando lista comprehension -->
+    # gr = [g for n, g in d2.groupby('ShipMode')]
+
 
 def direto_csv_net(address):
     return pd.read_csv(f'{address}?raw=True')
@@ -21,58 +50,10 @@ def direto_csv_net(address):
 if __name__ == '__main__':
     p2 = r'https://github.com/metatron-app/metatron-doc-discovery/blob/master/_static/data/sales-data-sample.csv'
     d2 = direto_csv_net(p2)
-    d2.plot('longitude', 'latitude', kind='scatter')
-    plt.show()
+    # exemplo_iterate_over_group(d2)
+    produz_respostas(d2)
+
+    # Plot rápido
+    # d2.plot('longitude', 'latitude', kind='scatter')
+    # plt.show()
     # d3 = d2.groupby('ShipMode').agg(['sum', 'count'])['Profit']
-
-    # print(len(d2))
-    # for name, grupo in d2.groupby('ShipMode'):
-    #     print(name, type(grupo), len(grupo))
-
-    # gr = [g for n, g in d2.groupby('ShipMode')]
-
-    import math
-
-    class Foo:
-        def __init__(self, i):
-            self.i = i
-
-        def raiz(self):
-            self.i = math.sqrt(self.i)
-            # Não temos um return nessa função
-            # Logo, por padrão, python sempre retorna None
-
-    a = [1, 2, 3, 4]
-    [math.sqrt(i) for i in a]
-    b = [Foo(i) for i in a]
-    [i.raiz() for i in b]
-
-    b[1].i
-
-    lista_nova = list()
-    for i in range(10):
-        lista_nova.append(i)
-
-    lista_nova2 = [i for i in range(10)]
-
-    a = {'a': 100, 'b': 200}
-
-    # dicionários, por padrão, o loop é na chave
-    # vc pode usar explícito. dict.keys()
-    # pode-se usar os valroes dict.values()
-    # ou ambos: dict.items()
-    for k, v in a.items():
-        print(k)
-        print(v ** 2)
-
-    lista_nova = list()
-    for i in range(10):
-        if i > 5:
-            lista_nova.append(i)
-
-    # se a condicional contiver um ELSE, é necessário trazer toda a
-    # expressão para antes do for (loop)
-    lista_nova2 = [math.sqrt(i) if i > 5 else 0 for i in range(10)]
-
-
-
