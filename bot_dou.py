@@ -15,6 +15,7 @@
 
 """
 import os
+# re : regular expression -- biblioteca para filtar, localizar, extrair textos ou sub-textos de textos gigantes
 import re
 
 import pandas as pd
