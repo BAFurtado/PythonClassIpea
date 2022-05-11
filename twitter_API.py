@@ -1,8 +1,8 @@
-import requests
-import twitter_secrets
-import re
 import json
 
+import requests
+
+import twitter_secrets
 
 bearer_token = twitter_secrets.secrets.get('Bearer Token')
 search_url = "https://api.twitter.com/2/tweets/search/recent"
