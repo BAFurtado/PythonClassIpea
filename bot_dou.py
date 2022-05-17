@@ -63,12 +63,18 @@ def get_main_text(text, db='dou.csv', path='/home/furtado/Documents/Professor/Py
         data.index.name = 'document'
     das_pattern = r'(DAS \d+.\d+)'
     siape_pattern = r'(SIAPE nº \d+)'
+    no_pattern = r'(Nº \d+)'
+    lines_no = re.findall(no_pattern, text)
     lines = text.split('\n')
     if lines[3] not in data.index:
-        data.loc[lines[3], 'context'] = lines[5]
-        data.loc[lines[3], 'das'] = re.findall(das_pattern, lines[5])
-        data.loc[lines[3], 'siape'] = re.findall(siape_pattern, lines[5])
-        print(lines[5])
+        for i in range(len(lines_no)):
+            try:
+                data.loc[lines[3] + lines_no[i], 'context'] = lines[5 + i]
+                data.loc[lines[3] + lines_no[i], 'das'] = re.findall(das_pattern, lines[5 + i])
+                data.loc[lines[3] + lines_no[i], 'siape'] = re.findall(siape_pattern, lines[5 + i])
+                print(lines[5 + i])
+            except ValueError:
+                break
     data.to_csv(os.path.join(path, f'data/{db}'), sep=';')
 
 
