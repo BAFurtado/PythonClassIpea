@@ -66,7 +66,12 @@ def get_main_text(text, db='dou.csv', path='/home/furtado/Documents/Professor/Py
     no_pattern = r'(Nº \d+)'
     lines_no = re.findall(no_pattern, text)
     lines = text.split('\n')
-    if lines[3] not in data.index:
+    if not lines_no:
+        idx = lines[3]
+        lines_no = [' ']
+    else:
+        idx = lines[3] + lines_no[0]
+    if idx not in data.index:
         for i in range(len(lines_no)):
             try:
                 data.loc[lines[3] + lines_no[i], 'context'] = lines[5 + i]
@@ -75,7 +80,7 @@ def get_main_text(text, db='dou.csv', path='/home/furtado/Documents/Professor/Py
                 print(lines[5 + i])
             except ValueError:
                 break
-    data.to_csv(os.path.join(path, f'data/{db}'), sep=';')
+        data.to_csv(os.path.join(path, f'data/{db}'), sep=';')
 
 
 if __name__ == '__main__':
